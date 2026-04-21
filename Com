@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int locks, stocks, barrels;
+    int sales;
+    float commission;
+
+    printf("Enter locks: ");
+    scanf("%d", &locks);
+
+    printf("Enter stocks: ");
+    scanf("%d", &stocks);
+
+    printf("Enter barrels: ");
+    scanf("%d", &barrels);
+
+
+    if (locks < 1 || locks > 70 ||
+        stocks < 1 || stocks > 80 ||
+        barrels < 1 || barrels > 90)
+    {
+        printf("Invalid input\n");
+        return 0;
+    }
+
+    // Sales
+    sales = (locks * 45) + (stocks * 30) + (barrels * 25);
+
+    // Commission
+    if (sales <= 1000)
+        commission = 0.10 * sales;
+    else if (sales <= 1800)
+        commission = 100 + 0.15 * (sales - 1000);
+    else
+        commission = 100 + 120 + 0.20 * (sales - 1800);
+
+    printf("Total Sales = %d\n", sales);
+    printf("Commission = %.2f\n", commission);
+
+    return 0;
+}
