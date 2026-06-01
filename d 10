@@ -1,0 +1,29 @@
+package demo;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import java.util.List;
+
+public class Webpage {
+
+    public static void main(String[] args) {
+
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("file:///C:/Users/adith/OneDrive/Desktop/combo1.html");
+
+        List<WebElement> options =
+                driver.findElements(By.xpath("//select/option"));
+
+        System.out.println("Number of options in combo box is: "
+                + options.size());
+
+        for (WebElement option : options) {
+            System.out.println(option.getText());
+        }
+
+        driver.quit();
+    }
+}
