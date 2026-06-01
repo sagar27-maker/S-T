@@ -1,0 +1,26 @@
+import java.io.File; 
+public class DesktopItemCounter { 
+public static void main(String[] args) { 
+ 
+String desktopPath = System.getProperty("user.home") + "\\Desktop"; 
+
+File desktopFolder = new File(desktopPath); 
+if (desktopFolder.exists() && desktopFolder.isDirectory()) { 
+File[] items = desktopFolder.listFiles(); 
+if (items != null) { 
+System.out.println("Number of items on Desktop: " + items.length); 
+for(File item:items) 
+{ 
+} 
+} 
+else  
+{ 
+System.out.println("-" + item.getName()); 
+System.out.println("could not read contents of Desktop"); 
+} 
+} else  
+{ 
+System.out.println("Desktop folder not found at :" + desktopPath); 
+} 
+} 
+}
