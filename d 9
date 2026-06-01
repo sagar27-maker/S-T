@@ -1,0 +1,27 @@
+package demo;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.List;
+
+public class Webpage {
+
+    public static void main(String[] args) {
+
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("https://example.com");
+
+        List<WebElement> elements = driver.findElements(By.xpath("//*"));
+
+        System.out.println("Total number of objects on the page: " + elements.size());
+
+        for (WebElement e : elements) {
+            System.out.println(e.getTagName());
+        }
+
+        driver.quit();
+    }
+}
