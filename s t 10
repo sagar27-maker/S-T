@@ -17,22 +17,20 @@ public class Combobox {
             driver.get("file:///C:/Users/DELL/Documents/combo1.html");
             driver.manage().window().maximize();
 
-            // Wait for 30 seconds
+          
             Thread.sleep(30000);
 
-            // Locate dropdown
+
             WebElement dropdown = driver.findElement(By.tagName("select"));
 
-            // Create Select object
             Select select = new Select(dropdown);
 
-            // Get all options
+        
             List<WebElement> options = select.getOptions();
 
-            // Print count
             System.out.println("Number of options in the combo box is: " + options.size());
 
-            // Print each option
+    
             for (WebElement option : options) {
                 System.out.println("- " + option.getText());
             }
