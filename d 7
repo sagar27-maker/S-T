@@ -1,0 +1,21 @@
+package demo;
+import java.io.File;
+
+public class Webpage{
+
+    public static void main(String[] args) {
+    
+    	
+        String desktopPath = "C:\\Users\\adith\\OneDrive\\Desktop";
+
+        File desktopFolder = new File(desktopPath);
+
+        File[] items = desktopFolder.listFiles();
+
+        System.out.println("Number of items on Desktop: " + items.length);
+
+        for (File item : items) {
+            System.out.println(item.getName());
+        }
+    }
+}
