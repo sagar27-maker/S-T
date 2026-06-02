@@ -1,7 +1,7 @@
 package demo;
 import java.io.File;
 
-public class Webpage{
+public class DesktopItemCounter{
 
     public static void main(String[] args) {
     
