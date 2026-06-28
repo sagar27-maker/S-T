@@ -1,21 +1,33 @@
 package demo;
+
 import java.io.File;
 
-public class DesktopItemCounter{
+public class DesktopItemCounter {
 
     public static void main(String[] args) {
-    
-    	
-        String desktopPath = "C:\\Users\\adith\\OneDrive\\Desktop";
+
+        String desktopPath = ( );
 
         File desktopFolder = new File(desktopPath);
 
-        File[] items = desktopFolder.listFiles();
+        if (desktopFolder.exists() && desktopFolder.isDirectory()) {
 
-        System.out.println("Number of items on Desktop: " + items.length);
+            File[] items = desktopFolder.listFiles();
 
-        for (File item : items) {
-            System.out.println(item.getName());
+            if (items != null) {
+
+                System.out.println("Number of items on Desktop: " + items.length);
+
+                for (File item : items) {
+                    System.out.println(item.getName());
+                }
+
+            } else {
+                System.out.println("Could not read Desktop contents.");
+            }
+
+        } else {
+            System.out.println("Desktop folder not found.");
         }
     }
 }
