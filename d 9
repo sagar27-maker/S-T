@@ -1,4 +1,6 @@
+
 package demo;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,16 +14,26 @@ public class Objects {
 
         WebDriver driver = new ChromeDriver();
 
-        driver.get("https://example.com");
+        try {
+            driver.get("https://example.com");
+            driver.manage().window().maximize();
 
-        List<WebElement> elements = driver.findElements(By.xpath("//*"));
+            Thread.sleep(10000);   // Wait for 10 seconds
 
-        System.out.println("Total number of objects on the page: " + elements.size());
+            List<WebElement> elements = driver.findElements(By.xpath("//*"));
 
-        for (WebElement e : elements) {
-            System.out.println(e.getTagName());
+            System.out.println("Total number of objects on the page: " + elements.size());
+
+            for (WebElement e : elements) {
+                System.out.println("- <" + e.getTagName() + ">");
+            }
+
+        } catch (InterruptedException e) {
+            System.out.println("Thread interrupted: " + e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            driver.quit();
         }
-
-        driver.quit();
     }
-}
+}\
