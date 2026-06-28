@@ -1,29 +1,38 @@
 package demo;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.List;
 
-public class comboBox {
+public class ComboBox {
 
     public static void main(String[] args) {
 
         WebDriver driver = new ChromeDriver();
 
-        driver.get("file:///C:/Users/adith/OneDrive/Desktop/combo1.html");
+        try {
+            driver.get("file:///C:/Users/DELL/Documents/combo1.html");
+            driver.manage().window().maximize();
 
-        List<WebElement> options =
-                driver.findElements(By.xpath("//select/option"));
+            List<WebElement> options =
+                    driver.findElements(By.xpath("//select/option"));
 
-        System.out.println("Number of options in combo box is: "
-                + options.size());
+            System.out.println("Number of options in combo box is: "
+                    + options.size());
 
-        for (WebElement option : options) {
-            System.out.println(option.getText());
+            for (WebElement option : options) {
+                System.out.println(option.getText());
+            }
+
+            Thread.sleep(5000);   // Keeps the page open for 5 seconds
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            driver.quit();
         }
-
-        driver.quit();
     }
 }
