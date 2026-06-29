@@ -1,0 +1,75 @@
+#include <stdio.h>
+
+int main()
+{
+    int locks, stocks, barrels;
+    int totalLocks = 0, totalStocks = 0, totalBarrels = 0;
+    int temp;
+    float sales, commission;
+
+    printf("Enter the number of locks (-1 to exit): ");
+    scanf("%d", &locks);
+
+    while (locks != -1)
+    {
+        printf("Enter the number of stocks and barrels: ");
+        scanf("%d%d", &stocks, &barrels);
+
+        
+        if (locks < 1 || locks > 70)
+            printf("Value of Locks is not in the range 1 to 70\n");
+        else
+        {
+            temp = totalLocks + locks;
+            if (temp <= 70)
+                totalLocks = temp;
+            else
+                printf("Total Locks exceed the limit (70)\n");
+        }
+
+        
+        if (stocks < 1 || stocks > 80)
+            printf("Value of Stocks is not in the range 1 to 80\n");
+        else
+        {
+            temp = totalStocks + stocks;
+            if (temp <= 80)
+                totalStocks = temp;
+            else
+                printf("Total Stocks exceed the limit (80)\n");
+        }
+
+        
+        if (barrels < 1 || barrels > 90)
+            printf("Value of Barrels is not in the range 1 to 90\n");
+        else
+        {
+            temp = totalBarrels + barrels;
+            if (temp <= 90)
+                totalBarrels = temp;
+            else
+                printf("Total Barrels exceed the limit (90)\n");
+        }
+
+        printf("\nTotal Locks = %d", totalLocks);
+        printf("\nTotal Stocks = %d", totalStocks);
+        printf("\nTotal Barrels = %d\n", totalBarrels);
+
+        printf("\nEnter the number of locks (-1 to exit): ");
+        scanf("%d", &locks);
+    }
+
+    sales = totalLocks * 45 + totalStocks * 30 + totalBarrels * 25;
+
+    if (sales <= 1000)
+        commission = sales * 0.10;
+    else if (sales <= 1800)
+        commission = 100 + (sales - 1000) * 0.15;
+    else
+        commission = 220 + (sales - 1800) * 0.20;
+
+    printf("\nTotal Sales = %.2f", sales);
+    printf("\nCommission = %.2f", commission);
+
+    return 0;
+}
