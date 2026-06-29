@@ -1,0 +1,69 @@
+import java.io.FileInputStream;
+		import java.io.FileOutputStream;
+
+		import org.apache.poi.ss.usermodel.Row;
+		import org.apache.poi.xssf.usermodel.XSSFSheet;
+		import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class UpdateExcel {
+
+	public static void main(String[] args) {
+
+		        try {
+		           
+		            String filePath = "C:\\Users\\adith\\OneDrive\\Desktop\\students.xlsx";
+
+		            FileInputStream fis = new FileInputStream(filePath);
+		            XSSFWorkbook workbook = new XSSFWorkbook(fis);
+		            XSSFSheet sheet = workbook.getSheetAt(0);
+
+		           
+		            Object[][] data = {
+		                    {101, "Amit", "CSE", 85},
+		                    {102, "Riya", "ECE", 90},
+		                    {103, "Kiran", "ME", 78},
+		                    {104, "Sneha", "EEE", 88},
+		                    {105, "Rahul", "Civil", 82},
+		                    {106, "Pooja", "ISE", 91}
+		            };
+
+		           
+		            for (int i = 0; i < data.length; i++) {
+
+		                Row row = sheet.getRow(i + 1);
+
+		                if (row == null) {
+		                    row = sheet.createRow(i + 1);
+		                }
+
+		                row.createCell(0).setCellValue((Integer) data[i][0]);
+		                row.createCell(1).setCellValue((String) data[i][1]);
+		                row.createCell(2).setCellValue((String) data[i][2]);
+		                row.createCell(3).setCellValue((Integer) data[i][3]);
+		            }
+
+		            fis.close();
+
+		            FileOutputStream fos = new FileOutputStream(filePath);
+		            workbook.write(fos);
+
+		            fos.close();
+		            workbook.close();
+
+		            System.out.println("6 Student records updated successfully.");
+
+		        } catch (Exception e) {
+		            e.printStackTrace();
+		        }
+		    }
+		
+	}
+
+
+ <dependencies>
+  <dependency>
+    <groupId>org.apache.poi</groupId>
+    <artifactId>poi-ooxml</artifactId>
+    <version>5.2.5</version>
+</dependency>
+</dependencies>
